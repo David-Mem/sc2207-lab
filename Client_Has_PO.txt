@@ -1,0 +1,17 @@
+CREATE TABLE ClientHasPO (
+    OID INT NOT NULL,
+    CID INT NOT NULL,
+    PRIMARY KEY (OID, CID),
+    -- Linking to the existing PurchaseOrder table
+    FOREIGN KEY (OID) REFERENCES PurchaseOrder(PO_Number)
+        ON DELETE CASCADE ON UPDATE CASCADE,
+    -- Linking to the Client table
+    FOREIGN KEY (CID) REFERENCES Client(CID)
+        ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+-- Dummy data for ClientHasPO
+INSERT INTO ClientHasPO (OID, CID) VALUES
+    (1001, 201),
+    (1002, 202),
+    (1004, 201);
