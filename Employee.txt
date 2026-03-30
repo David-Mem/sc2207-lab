@@ -1,0 +1,7 @@
+CREATE TABLE Employee (
+    SID INT PRIMARY KEY,
+    Certification VARCHAR(100),
+    WarID INT NOT NULL,
+    FOREIGN KEY (SID) REFERENCES Staff(SID),
+    FOREIGN KEY (WarID) REFERENCES Warehouse(WID)
+);
