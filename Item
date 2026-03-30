@@ -1,8 +1,9 @@
 CREATE TABLE Item(
-Serial# VARCHAR(50),
-PID INT NOT NULL,
-PRIMARY KEY(Serial#));
+  Serial# VARCHAR(50),
+  PID INT NOT NULL,
+  PRIMARY KEY(Serial#)
+);
 
 INSERT INTO Item (
 
-)
+);
