@@ -3,4 +3,5 @@ CREATE TABLE ShipItem(
   ShipID VCHAR(50),
   ExArrDate DATE,
   ShippedQty INT NOT NULL,
+  PRIMARY KEY (Serial#, ShipID)
 );
