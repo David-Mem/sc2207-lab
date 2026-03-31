@@ -1,6 +1,6 @@
 CREATE TABLE ClientHasPO (
-    OID INT NOT NULL,
-    CID INT NOT NULL,
+    OID VARCHAR(30) NOT NULL,
+    CID VARCHAR(30) NOT NULL,
     PRIMARY KEY (OID, CID),
     -- Linking to the existing PurchaseOrder table
     FOREIGN KEY (OID) REFERENCES PurchaseOrder(PO_Number)

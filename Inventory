@@ -1,15 +1,15 @@
 CREATE TABLE Inventory(
-  Serial# INT,
-  PID VARCHAR(50),
-  WID VARCHAR(50),
-  CID VARCHAR(50),
+  Serial# VARCHAR(30),
+  PID VARCHAR(30),
+  WID VARCHAR(30),
+  CID VARCHAR(30),
   rQty INT NOT NULL,
   hQty INT NOT NULL,
   sQty INT NOT NULL,
   oQty INT NOT NULL,
-  Location VARCHAR(50),
-  Movement VARCHAR(50),
-  Reasons VARCHAR(200),
+  Location VARCHAR(255),
+  Movement VARCHAR(255),
+  Reasons VARCHAR(255),
   PRIMARY KEY(Serial#, PID, WID, CID)
 );
 

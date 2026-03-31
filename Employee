@@ -1,7 +1,8 @@
 CREATE TABLE Employee (
-    SID INT PRIMARY KEY,
-    Certification VARCHAR(100),
-    WarID INT NOT NULL,
+    SID VARCHAR(30),
+    PRIMARY KEY (SID),
+    Certification VARCHAR(255),
+    WarID VARCHAR(30) NOT NULL,
     FOREIGN KEY (SID) REFERENCES Staff(SID),
     FOREIGN KEY (WarID) REFERENCES Warehouse(WID)
 );

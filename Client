@@ -1,5 +1,6 @@
 CREATE TABLE Client (
-    CID INT PRIMARY KEY,
+    CID VARCHAR(30)P,
+    pRIMARY KEY (CID),
     CompanyName VARCHAR(255),
     ContactPerson VARCHAR(255),
     StartDate DATE,
