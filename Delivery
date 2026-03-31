@@ -1,8 +1,0 @@
-CREATE TABLE DELIVERY(
-  Delivery_Date DATE,
-  RID VARCHAR(30),
-  VID VARCHAR(30),
-  WID VARCHAR(30),
-  ShipID VARCHAR(30),
-  PRIMARY KEY(Delivery_DateDelivery_Date, RID, VID, WID, ShipID)
-);

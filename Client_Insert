@@ -1,7 +1,0 @@
-INSERT INTO Client (CID, CompanyName, ContactPerson, StartDate, ServiceTier)
-VALUES 
-(101, 'Global Tech Solutions', 'Alice Tan', '2024-01-15', 'Platinum'),
-(102, 'Eco-Friendly Goods', 'Bob Lim', '2024-03-20', 'Gold'),
-(103, 'Swift Logistics Inc', 'Charlie Ng', '2025-05-10', 'Silver'),
-(104, 'Premium Retailers', 'Diana Low', '2025-08-01', 'Bronze'),
-(105, 'MegaMart Singapore', 'Edward Goh', '2026-02-11', 'Platinum');

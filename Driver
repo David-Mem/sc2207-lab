@@ -1,7 +1,0 @@
-CREATE TABLE Driver (
-    SID VARCHAR(30),
-    PRIMARY KEY (SID),
-    LicenseNo VARCHAR(30) NOT NULL,
-    LicenseExpiration DATE NOT NULL,
-    VID VARCHAR(30) NOT NULL,
-);

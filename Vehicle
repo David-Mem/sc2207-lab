@@ -1,8 +1,0 @@
-CREATE TABLE Vehicle(
-  VID VARCHAR(30),
-  Type VARCHAR(30),
-  License VARCHAR(30),
-  CapacityWgt DECIMAL(8, 2),
-  CapacityVol DECIMAL(8, 2),
-  PRIMARY KEY (VID)
-);

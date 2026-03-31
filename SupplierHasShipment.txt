@@ -1,5 +1,0 @@
-CREATE TABLE SupplierHasShipment (
-    SupID VARCHAR(30) NOT NULL,
-    ShipID VARCHAR(30) NOT NULL,
-    PRIMARY KEY (SupID, ShipID),
-);

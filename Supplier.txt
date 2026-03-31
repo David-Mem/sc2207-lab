@@ -1,8 +1,0 @@
-CREATE TABLE Supplier (
-    SupID VARCHAR(30),
-    PRIMARY KEY (SupID),
-    Country VARCHAR(255),
-    Name VARCHAR(255),
-    PaymentTerms VARCHAR(255),
-    LeadTimeDays INT
-);

@@ -1,9 +1,0 @@
-CREATE TABLE Shipment(
-  ShipID VARCHAR(30) PRIMARY KEY,
-  OriLocation VARCHAR(255),
-  TrackingNum VARCHAR(30),
-  ShipDate DATE,
-  ExArrDate DATE,
-  ActArrDate DATE,
-  OID VARCHAR(30) NOT NULL
-);

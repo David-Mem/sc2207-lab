@@ -1,8 +1,0 @@
-CREATE TABLE Supply (
-    PID VARCHAR(30),
-    SupID VARCHAR(30),
-    CID VARCHAR(30),
-    ContractStartDate DATE,
-    ContractEndDate DATE,
-    PRIMARY KEY (PID, SupID, CID, ContractStartDate, ContractEndDate)
-);
