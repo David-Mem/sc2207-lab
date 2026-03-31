@@ -1,7 +1,7 @@
 CREATE TABLE Supply (
-    PID VARCHAR(50),
-    SupID VARCHAR(50) REFERENCES Supplier(SupID),
-    CID VARCHAR(50) REFERENCES Client(CID),
-    Period VARCHAR(50),
+    PID VARCHAR(30),
+    SupID VARCHAR(30),
+    CID VARCHAR(30),
+    Period VARCHAR(30),
     PRIMARY KEY (PID, SupID, CID, Period)
 );
