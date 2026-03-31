@@ -2,8 +2,8 @@
 
 ## Group Information
 
-- Group: `[Fill in group number]`
-- Team members: `[Fill in names exactly as required]`
+- Group: `1`
+- Team members: `.`
 - Database name: `scsdg1`
 - Project title: `GlobalLogistics`
 
@@ -24,7 +24,7 @@ Additional effort was made to clean and standardize the project into a rerunnabl
 
 ## DDL Commands
 
-Source file: [GlobalLogistics_Schema.sql](C:/Users/asus/Desktop/sc2207-lab-fix/GlobalLogistics_Schema.sql)
+Source file: GlobalLogistics_Schema.sql
 
 ```sql
 SET NOCOUNT ON;
@@ -635,7 +635,7 @@ This query counts shipment origins where the actual arrival date is more than si
 
 ## Printout of All Table Records
 
-Source file: [GlobalLogistics_Print_All_Tables.sql](C:/Users/asus/Desktop/sc2207-lab-fix/GlobalLogistics_Print_All_Tables.sql)
+Source file: GlobalLogistics_Print_All_Tables.sql
 
 Use the table outputs produced from the final rerun. If you are converting this markdown to PDF, the cleanest approach is to paste the table result screenshots or exported result blocks under each heading below.
 
@@ -1154,8 +1154,7 @@ DeliveryDate  RID         VID         WID         ShipID
 
 ## Appendix C
 
-`[Fill in Appendix C exactly as required by the lab manual.]`
+
 
 ## Appendix D
 
-`[Fill in Appendix D exactly as required by the lab manual.]`
