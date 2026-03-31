@@ -1,0 +1,8 @@
+CREATE DELIVERY(
+  Date DATE,
+  RouteID VARCHAR(30),
+  VehicleID VARCHAR(30),
+  WarehouseID VARCHAR(30),
+  ShipmentID VARCHAR(30),
+  PRIMARY KEY(Date, RouteID, VehicleID, WarehouseID, ShipmentID)
+);
