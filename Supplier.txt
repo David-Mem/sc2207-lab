@@ -1,5 +1,5 @@
 CREATE TABLE Supplier (
-    SupID INT PRIMARY KEY,
+    SupID VARCHAR(50) PRIMARY KEY,
     Country VARCHAR(100),
     Name VARCHAR(255),
     PaymentTerms VARCHAR(255),

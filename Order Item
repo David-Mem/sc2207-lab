@@ -1,5 +1,5 @@
 CREATE TABLE OrderItem(
-  Serial# INT,
+  Serial# VARCHAR(50),
   OID VARCHAR(50),
   ExArrDate DATE,
   OrderedQty INT NOT NULL,
@@ -9,8 +9,4 @@ CREATE TABLE OrderItem(
 
 INSERT INTO OrderItem (`Serial#`, OID, ExArrDate, OrderedQty, UnitPrice) VALUES 
 (
-  (100001, 'ORD-2026-0001', '2026-04-15', 1, 12.50),
-  (100002, 'ORD-2026-0001', '2026-04-15', 1, 12.50),
-  (100003, 'ORD-2026-0001', '2026-04-15', 1,  9.90),
-  (100004, 'ORD-2026-0001', '2026-04-15', 1,  9.90)
 );

@@ -1,6 +1,6 @@
 CREATE TABLE SupplierHasPO (
-    OID INT NOT NULL,
-    SupID INT NOT NULL,
+    OID VARCHAR(50) NOT NULL,
+    SupID VARCHAR(50) NOT NULL,
     PRIMARY KEY (OID, SupID),
     -- Linking to the existing PurchaseOrder table
     FOREIGN KEY (OID) REFERENCES PurchaseOrder(PO_Number)
