@@ -1,8 +1,10 @@
 SELECT 
     AVG(
-        (EXTRACT(YEAR FROM s.Ac_Arr_Date) * 12 + EXTRACT(MONTH FROM s.Ac_Arr_Date)) - 
-        (EXTRACT(YEAR FROM p.Order_date) * 12 + EXTRACT(MONTH FROM p.Order_date))
+        1.0 * (
+            (YEAR(s.AcArrDate) * 12 + MONTH(s.AcArrDate)) -
+            (YEAR(p.OrderDate) * 12 + MONTH(p.OrderDate))
+        )
     ) AS Avg_Lead_Time_Months
 FROM PO p
 JOIN Shipment s ON p.OID = s.OID
-WHERE s.Ac_Arr_Date IS NOT NULL;
+WHERE s.AcArrDate IS NOT NULL;

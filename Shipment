@@ -1,9 +1,9 @@
 CREATE TABLE Shipment(
   ShipID VARCHAR(30) PRIMARY KEY,
   OriLocation VARCHAR(255),
-  Tracking# VARCHAR(30),
+  TrackingNum VARCHAR(30),
   ShipDate DATE,
   ExArrDate DATE,
-  AcArrDate DATE,
+  ActArrDate DATE,
   OID VARCHAR(30) NOT NULL
 );

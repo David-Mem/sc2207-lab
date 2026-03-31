@@ -1,0 +1,510 @@
+-- ================================================================
+-- GLOBALLOGISTICS DATABASE - STREAMLINED DATA FOR QUERIES
+-- ================================================================
+
+-- ================================================================
+-- 1. CLIENT DATA - 12 clients
+-- ================================================================
+DELETE FROM Client;
+INSERT INTO Client (CID, CompanyName, ContactPerson, StartDate, ServiceTier) VALUES
+('C001', 'Amazon Singapore', 'John Smith', '2020-01-15', 'Gold'),
+('C002', 'Lazada Southeast Asia', 'Sarah Johnson', '2019-06-22', 'Gold'),
+('C003', 'Shopee Philippines', 'Michael Chen', '2021-03-10', 'Silver'),
+('C004', 'TikTok Shop Thailand', 'Emily Rodriguez', '2018-09-30', 'Platinum'),
+('C005', 'AEON Thailand', 'David Wilson', '2018-11-14', 'Gold'),
+('C006', 'Zalora Vietnam', 'Lisa Anderson', '2022-02-14', 'Silver'),
+('C007', 'DHL eCommerce', 'James Thompson', '2019-04-08', 'Platinum'),
+('C008', 'Kerry Logistics', 'Jennifer Lee', '2020-10-25', 'Gold'),
+('C009', 'Robinsons Singapore', 'Robert Martinez', '2020-03-25', 'Silver'),
+('C010', 'Takashimaya Singapore', 'Amanda Clark', '2019-08-14', 'Platinum'),
+('C011', 'SM Malls Philippines', 'Christopher White', '2021-05-11', 'Gold'),
+('C012', 'Central World Bangkok', 'Michelle Garcia', '2019-07-17', 'Gold');
+
+-- ================================================================
+-- 2. WAREHOUSE DATA - 6 warehouses (3 Singapore, 2 LA, 1 Bangkok)
+-- ================================================================
+DELETE FROM Warehouse;
+INSERT INTO Warehouse (WID, Address, Size, Temperature, Security) VALUES
+('WH-SG-001', '26 Nanyang Avenue, Singapore', 40000.25, 23.6, 5),
+('WH-SG-002', '03 Shenton Way, Singapore', 20000.00, 24.0, 4),
+('WH-SG-003', '25 Broadway, Singapore', 10492.00, 24.1, 3),
+('WH-LA-001', '1234 Industrial Blvd, Los Angeles, USA', 50000.00, 22.5, 5),
+('WH-LA-002', '5678 Freight Lane, Los Angeles, USA', 35000.00, 22.0, 4),
+('WH-BKK-001', '123 Soi Sukhumvit 38, Bangkok, Thailand', 28000.00, 25.0, 4);
+
+-- ================================================================
+-- 3. ZONE DATA - Storage zones
+-- ================================================================
+DELETE FROM Zone;
+INSERT INTO Zone (WID, Location, Code) VALUES
+('WH-SG-001', 'Receiving', 1),
+('WH-SG-001', 'Bulk Storage', 2),
+('WH-SG-001', 'Picking Area', 3),
+('WH-SG-001', 'Packing Area', 4),
+('WH-SG-001', 'Shipping Dock', 5),
+('WH-SG-002', 'Receiving', 1),
+('WH-SG-002', 'Bulk Storage', 2),
+('WH-SG-003', 'Receiving', 1),
+('WH-LA-001', 'Receiving', 1),
+('WH-LA-002', 'Receiving', 1),
+('WH-BKK-001', 'Receiving', 1);
+
+-- ================================================================
+-- 4. PRODUCT DATA - 10 products
+-- ================================================================
+DELETE FROM Product;
+INSERT INTO Product (PID, ItemSerial, Name, Brand, Category, UnitCost, RetailPrice, Length, Width, Height, HandlingRequirements) VALUES
+('P001', 'SN-ELEC-001', 'Laptop Pro 15', 'TechBrand', 'Electronics', 800.00, 1200.00, 35.79, 24.59, 1.62, 'Fragile, Handle with care'),
+('P002', 'SN-ELEC-002', 'Wireless Mouse', 'ClickMaster', 'Computer Accessories', 15.50, 29.99, 10.0, 6.0, 4.0, NULL),
+('P003', 'SN-ELEC-003', 'Mechanical Keyboard', 'TypeFast', 'Computer Accessories', 75.00, 130.00, 44.0, 13.0, 3.5, 'Keep Dry'),
+('P004', 'SN-ELEC-004', '4K Monitor 27 inch', 'ViewSharp', 'Electronics', 250.00, 399.99, 61.0, 36.0, 5.0, 'Fragile, Screen side up'),
+('P005', 'SN-CLOTH-001', 'Cotton T-Shirt', 'FashionBrand', 'Apparel', 5.00, 15.00, 30.0, 25.0, 1.0, NULL),
+('P006', 'SN-CLOTH-002', 'Denim Jeans', 'StyleHub', 'Apparel', 15.00, 45.00, 32.0, 30.0, 2.0, NULL),
+('P007', 'SN-FOOD-001', 'Instant Noodles Pack', 'FoodBrand', 'Food & Beverages', 0.50, 1.50, 20.0, 15.0, 5.0, 'Keep Dry'),
+('P008', 'SN-FOOD-002', 'Coffee Beans 500g', 'BeansCo', 'Food & Beverages', 8.00, 20.00, 15.0, 10.0, 10.0, 'Temperature Controlled, Keep Dry'),
+('P009', 'SN-HOME-001', 'Bedding Set', 'HomeDecor', 'Home & Garden', 20.00, 60.00, 40.0, 30.0, 10.0, NULL),
+('P010', 'SN-WATCH-001', 'Smart Watch', 'TechTime', 'Electronics', 50.00, 150.00, 8.0, 8.0, 8.0, 'Fragile, High-Value');
+
+-- ================================================================
+-- 5. SUPPLIER DATA - 8 suppliers (including Singapore-only)
+-- ================================================================
+DELETE FROM Supplier;
+INSERT INTO Supplier (SupID, Country, Name, PaymentTerms, LeadTime_Days) VALUES
+('SUP001', 'China', 'TechImports Ltd', 'Net 30', 30),
+('SUP002', 'Taiwan', 'Electronics Factory', 'Net 45', 25),
+('SUP003', 'Vietnam', 'TextileCorp Vietnam', 'Net 30', 20),
+('SUP004', 'Thailand', 'Bangkok Garment Works', 'Net 30', 15),
+('SUP005', 'Singapore', 'Singapore Suppliers Group', 'Net 15', 10),
+('SUP006', 'South Korea', 'Seoul Electronics', 'Net 45', 28),
+('SUP007', 'Japan', 'Tokyo Manufacturing', 'Net 60', 35),
+('SUP008', 'China', 'Shanghai Imports Co', 'Net 30', 32);
+
+-- ================================================================
+-- 6. SUPPLY CONTRACTS - Product-Supplier-Client relationships
+-- ================================================================
+DELETE FROM Supply;
+INSERT INTO Supply (PID, SupID, CID, Contract_Start_Date, Contract_End_Date) VALUES
+-- Singapore suppliers (SUP005) only supplies to Singapore clients and warehouses
+('P001', 'SUP005', 'C001', '2020-01-15', '2026-12-31'),
+('P001', 'SUP005', 'C009', '2020-03-25', '2026-12-31'),
+('P009', 'SUP005', 'C010', '2019-08-14', '2026-12-31'),
+-- China suppliers supply to multiple regions
+('P001', 'SUP001', 'C001', '2020-01-15', '2026-12-31'),
+('P002', 'SUP001', 'C001', '2020-01-15', '2026-12-31'),
+('P003', 'SUP001', 'C011', '2021-05-11', '2026-12-31'),
+-- Taiwan supplier
+('P004', 'SUP002', 'C001', '2020-02-01', '2026-12-31'),
+('P010', 'SUP002', 'C007', '2019-05-01', '2026-12-31'),
+-- Vietnam supplier
+('P005', 'SUP003', 'C006', '2022-02-14', '2026-12-31'),
+('P006', 'SUP003', 'C006', '2022-02-14', '2026-12-31'),
+-- Thailand supplier (supplies Bangkok and to other regions)
+('P007', 'SUP004', 'C004', '2018-09-30', '2026-12-31'),
+('P008', 'SUP004', 'C005', '2018-11-14', '2026-12-31'),
+('P005', 'SUP004', 'C004', '2018-10-01', '2026-12-31'),
+-- South Korea supplier
+('P002', 'SUP006', 'C002', '2019-06-22', '2026-12-31'),
+('P010', 'SUP006', 'C008', '2020-10-25', '2026-12-31'),
+-- Shanghai for delayed shipments
+('P001', 'SUP008', 'C002', '2020-01-01', '2026-12-31'),
+('P003', 'SUP008', 'C007', '2020-02-01', '2026-12-31');
+
+-- ================================================================
+-- 7. VEHICLE DATA - 6 vehicles
+-- ================================================================
+DELETE FROM Vehicle;
+INSERT INTO Vehicle (VID, Type, License, CapacityWgt, CapacityVol) VALUES
+('V001', 'Van', 'SG-VAN-001', 2000.00, 12.00),
+('V002', 'Truck', 'SG-TRUCK-001', 5000.00, 35.00),
+('V003', 'Refrigerated Truck', 'SG-REFRIG-001', 3500.00, 20.00),
+('V004', 'Van', 'LA-VAN-001', 2000.00, 12.00),
+('V005', 'Truck', 'LA-TRUCK-001', 5500.00, 40.00),
+('V006', 'Truck', 'BKK-TRUCK-001', 5000.00, 35.00);
+
+-- ================================================================
+-- 8. EMPLOYEE DATA - Warehouse staff
+-- ================================================================
+DELETE FROM Employee;
+INSERT INTO Employee (SID, Certification, WID) VALUES
+('EMP001', 'Forklift Operator, Hazmat Handling', 'WH-SG-001'),
+('EMP002', 'Forklift Operator', 'WH-SG-002'),
+('EMP003', 'Quality Inspector', 'WH-SG-003'),
+('EMP004', 'Forklift Operator, High Reach', 'WH-LA-001'),
+('EMP005', 'Hazmat Handling', 'WH-LA-002'),
+('EMP006', 'Forklift Operator', 'WH-BKK-001');
+
+-- ================================================================
+-- 9. DRIVER DATA - Fleet drivers
+-- ================================================================
+DELETE FROM Driver;
+INSERT INTO Driver (SID, LicenseNo, LicenseExpiration, VID) VALUES
+('DRV001', 'SG-DRV-2019-001', '2027-06-30', 'V001'),
+('DRV002', 'SG-DRV-2020-002', '2028-03-15', 'V002'),
+('DRV003', 'SG-DRV-2020-003', '2028-01-10', 'V003'),
+('DRV004', 'LA-DRV-2019-001', '2027-05-15', 'V004'),
+('DRV005', 'LA-DRV-2018-002', '2026-11-20', 'V005'),
+('DRV006', 'BKK-DRV-2020-001', '2028-08-30', 'V006');
+
+-- ================================================================
+-- 10. ROUTE DATA - Delivery routes
+-- ================================================================
+DELETE FROM Route;
+INSERT INTO Route (RID, Distance, Total_Stops, Status) VALUES
+('R001', 15.5, 5, 'Completed'),
+('R002', 22.3, 8, 'Completed'),
+('R003', 18.9, 6, 'Completed'),
+('R004', 25.5, 10, 'Completed'),
+('R005', 14.2, 4, 'Completed');
+
+-- ================================================================
+-- 11. STOP DATA - Individual delivery stops
+-- ================================================================
+DELETE FROM Stop;
+INSERT INTO Stop (RID, Sequence, Est_Arr_Time, Actual_Arr_Time) VALUES
+('R001', 1, '2026-03-26 08:00:00', '2026-03-26 08:15:00'),
+('R001', 2, '2026-03-26 09:00:00', '2026-03-26 09:10:00'),
+('R002', 1, '2026-03-27 08:30:00', '2026-03-27 08:45:00'),
+('R002', 2, '2026-03-27 10:00:00', '2026-03-27 10:10:00'),
+('R003', 1, '2026-03-28 09:00:00', '2026-03-28 09:20:00');
+
+-- ================================================================
+-- 12. ITEM DATA - Individual items
+-- ================================================================
+DELETE FROM Item;
+INSERT INTO Item (Serial#, PID) VALUES
+('ITEM-001', 'P001'),
+('ITEM-002', 'P001'),
+('ITEM-003', 'P002'),
+('ITEM-004', 'P003'),
+('ITEM-005', 'P004'),
+('ITEM-006', 'P005'),
+('ITEM-007', 'P006'),
+('ITEM-008', 'P007'),
+('ITEM-009', 'P008'),
+('ITEM-010', 'P009'),
+('ITEM-011', 'P010'),
+('ITEM-012', 'P002'),
+('ITEM-013', 'P003'),
+('ITEM-014', 'P004'),
+('ITEM-015', 'P005');
+
+-- ================================================================
+-- 13. PO DATA - Purchase orders (2024-2025 for queries)
+-- ================================================================
+DELETE FROM PO;
+INSERT INTO PO (OID, OrderDate, Status, Value) VALUES
+-- January 2024 (for Query 3)
+('PO-2024-001', '2024-01-05', 'Fully Received', 25000.00),
+('PO-2024-002', '2024-01-15', 'Fully Received', 18000.00),
+('PO-2024-003', '2024-01-25', 'Fully Received', 22000.00),
+-- February 2024
+('PO-2024-004', '2024-02-10', 'Fully Received', 15000.00),
+('PO-2024-005', '2024-02-20', 'Fully Received', 20000.00),
+-- March 2024
+('PO-2024-006', '2024-03-01', 'Fully Received', 19000.00),
+('PO-2024-007', '2024-03-15', 'Fully Received', 23000.00),
+-- October 2024 (for Query 3 - top months)
+('PO-2024-008', '2024-10-05', 'Fully Received', 21000.00),
+('PO-2024-009', '2024-10-15', 'Fully Received', 24000.00),
+('PO-2024-010', '2024-10-25', 'Fully Received', 19500.00),
+-- November 2024 (for Query 3 - top months)
+('PO-2024-011', '2024-11-10', 'Fully Received', 26000.00),
+('PO-2024-012', '2024-11-20', 'Fully Received', 20500.00),
+-- December 2024 (for Query 3 - top months)
+('PO-2024-013', '2024-12-01', 'Fully Received', 23000.00),
+('PO-2024-014', '2024-12-15', 'Fully Received', 17750.00),
+-- January 2025
+('PO-2025-001', '2025-01-08', 'Fully Received', 20000.00),
+('PO-2025-002', '2025-01-18', 'Fully Received', 24500.00),
+-- February 2025
+('PO-2025-003', '2025-02-12', 'Fully Received', 27000.00),
+('PO-2025-004', '2025-02-22', 'Fully Received', 18500.00),
+-- March 2025
+('PO-2025-005', '2025-03-05', 'Fully Received', 25000.00),
+('PO-2025-006', '2025-03-18', 'Fully Received', 21500.00),
+-- October 2025 (for Query 3 - top months)
+('PO-2025-007', '2025-10-08', 'Fully Received', 22000.00),
+('PO-2025-008', '2025-10-18', 'Fully Received', 25500.00),
+('PO-2025-009', '2025-10-28', 'Fully Received', 21750.00),
+-- November 2025
+('PO-2025-010', '2025-11-12', 'Fully Received', 28500.00),
+('PO-2025-011', '2025-11-22', 'Fully Received', 23500.00),
+-- December 2025
+('PO-2025-012', '2025-12-05', 'Fully Received', 26500.00),
+('PO-2025-013', '2025-12-18', 'Fully Received', 20750.00);
+
+-- ================================================================
+-- 14. CLIENT_HAS_PO DATA - Clients and their POs
+-- ================================================================
+DELETE FROM ClientHasPO;
+INSERT INTO ClientHasPO (OID, CID) VALUES
+('PO-2024-001', 'C001'),
+('PO-2024-002', 'C002'),
+('PO-2024-003', 'C007'),
+('PO-2024-004', 'C001'),
+('PO-2024-005', 'C003'),
+('PO-2024-006', 'C004'),
+('PO-2024-007', 'C005'),
+('PO-2024-008', 'C005'),
+('PO-2024-009', 'C004'),
+('PO-2024-010', 'C012'),
+('PO-2024-011', 'C004'),
+('PO-2024-012', 'C005'),
+('PO-2024-013', 'C007'),
+('PO-2024-014', 'C002'),
+('PO-2025-001', 'C001'),
+('PO-2025-002', 'C002'),
+('PO-2025-003', 'C001'),
+('PO-2025-004', 'C003'),
+('PO-2025-005', 'C004'),
+('PO-2025-006', 'C006'),
+('PO-2025-007', 'C004'),
+('PO-2025-008', 'C005'),
+('PO-2025-009', 'C012'),
+('PO-2025-010', 'C004'),
+('PO-2025-011', 'C005'),
+('PO-2025-012', 'C001'),
+('PO-2025-013', 'C002');
+
+-- ================================================================
+-- 15. SUPPLIER_HAS_PO DATA - Suppliers fulfilling POs
+-- ================================================================
+DELETE FROM SupplierHasPO;
+INSERT INTO SupplierHasPO (OID, SupID) VALUES
+('PO-2024-001', 'SUP001'),
+('PO-2024-002', 'SUP002'),
+('PO-2024-003', 'SUP006'),
+('PO-2024-004', 'SUP001'),
+('PO-2024-005', 'SUP003'),
+('PO-2024-006', 'SUP004'),
+('PO-2024-007', 'SUP004'),
+('PO-2024-008', 'SUP004'),
+('PO-2024-009', 'SUP004'),
+('PO-2024-010', 'SUP004'),
+('PO-2024-011', 'SUP004'),
+('PO-2024-012', 'SUP004'),
+('PO-2024-013', 'SUP006'),
+('PO-2024-014', 'SUP002'),
+('PO-2025-001', 'SUP001'),
+('PO-2025-002', 'SUP002'),
+('PO-2025-003', 'SUP005'),
+('PO-2025-004', 'SUP003'),
+('PO-2025-005', 'SUP004'),
+('PO-2025-006', 'SUP003'),
+('PO-2025-007', 'SUP004'),
+('PO-2025-008', 'SUP004'),
+('PO-2025-009', 'SUP004'),
+('PO-2025-010', 'SUP004'),
+('PO-2025-011', 'SUP004'),
+('PO-2025-012', 'SUP001'),
+('PO-2025-013', 'SUP002');
+
+-- ================================================================
+-- 16. SHIPMENT DATA - Inbound shipments
+-- ================================================================
+DELETE FROM Shipment;
+INSERT INTO Shipment (ShipID, OriLocation, Tracking#, ShipDate, ExArrDate, AcArrDate, OID) VALUES
+-- Normal lead time shipments (for Query 4)
+('SHIP-2024-001', 'Shanghai, China', 'TRACK-001', '2023-12-10', '2024-01-05', '2024-01-05', 'PO-2024-001'),
+('SHIP-2024-002', 'Taipei, Taiwan', 'TRACK-002', '2024-01-02', '2024-01-15', '2024-01-15', 'PO-2024-002'),
+('SHIP-2024-003', 'Seoul, South Korea', 'TRACK-003', '2024-01-10', '2024-01-25', '2024-01-25', 'PO-2024-003'),
+('SHIP-2024-004', 'Shanghai, China', 'TRACK-004', '2024-02-01', '2024-02-10', '2024-02-10', 'PO-2024-004'),
+('SHIP-2024-005', 'Ho Chi Minh, Vietnam', 'TRACK-005', '2024-02-05', '2024-02-20', '2024-02-20', 'PO-2024-005'),
+('SHIP-2024-006', 'Bangkok, Thailand', 'TRACK-006', '2024-02-15', '2024-03-01', '2024-03-01', 'PO-2024-006'),
+('SHIP-2024-007', 'Bangkok, Thailand', 'TRACK-007', '2024-02-28', '2024-03-15', '2024-03-15', 'PO-2024-007'),
+('SHIP-2024-008', 'Bangkok, Thailand', 'TRACK-008', '2024-09-25', '2024-10-05', '2024-10-05', 'PO-2024-008'),
+('SHIP-2024-009', 'Bangkok, Thailand', 'TRACK-009', '2024-10-05', '2024-10-15', '2024-10-15', 'PO-2024-009'),
+('SHIP-2024-010', 'Bangkok, Thailand', 'TRACK-010', '2024-10-15', '2024-10-25', '2024-10-25', 'PO-2024-010'),
+('SHIP-2024-011', 'Bangkok, Thailand', 'TRACK-011', '2024-10-25', '2024-11-10', '2024-11-10', 'PO-2024-011'),
+('SHIP-2024-012', 'Bangkok, Thailand', 'TRACK-012', '2024-11-05', '2024-11-20', '2024-11-20', 'PO-2024-012'),
+('SHIP-2024-013', 'Seoul, South Korea', 'TRACK-013', '2024-11-15', '2024-12-01', '2024-12-01', 'PO-2024-013'),
+('SHIP-2024-014', 'Taipei, Taiwan', 'TRACK-014', '2024-12-01', '2024-12-15', '2024-12-15', 'PO-2024-014'),
+-- 2025 shipments
+('SHIP-2025-001', 'Shanghai, China', 'TRACK-015', '2024-12-20', '2025-01-08', '2025-01-08', 'PO-2025-001'),
+('SHIP-2025-002', 'Taipei, Taiwan', 'TRACK-016', '2025-01-05', '2025-01-18', '2025-01-18', 'PO-2025-002'),
+('SHIP-2025-003', 'Singapore, Singapore', 'TRACK-017', '2025-02-01', '2025-02-12', '2025-02-12', 'PO-2025-003'),
+('SHIP-2025-004', 'Ho Chi Minh, Vietnam', 'TRACK-018', '2025-02-08', '2025-02-22', '2025-02-22', 'PO-2025-004'),
+('SHIP-2025-005', 'Bangkok, Thailand', 'TRACK-019', '2025-02-20', '2025-03-05', '2025-03-05', 'PO-2025-005'),
+('SHIP-2025-006', 'Ho Chi Minh, Vietnam', 'TRACK-020', '2025-03-05', '2025-03-18', '2025-03-18', 'PO-2025-006'),
+-- DELAYED SHIPMENTS (for Query 7 - 6+ month delays from Shanghai)
+('SHIP-2025-007-DELAYED', 'Shanghai, China', 'TRACK-021', '2024-09-01', '2025-10-08', '2026-04-15', 'PO-2025-007'),
+('SHIP-2025-008-DELAYED', 'Shanghai, China', 'TRACK-022', '2024-09-15', '2025-10-18', '2026-05-20', 'PO-2025-008'),
+('SHIP-2025-009', 'Bangkok, Thailand', 'TRACK-023', '2025-09-28', '2025-10-28', '2025-10-28', 'PO-2025-009'),
+('SHIP-2025-010', 'Bangkok, Thailand', 'TRACK-024', '2025-10-15', '2025-11-12', '2025-11-12', 'PO-2025-010'),
+('SHIP-2025-011', 'Bangkok, Thailand', 'TRACK-025', '2025-11-08', '2025-11-22', '2025-11-22', 'PO-2025-011'),
+('SHIP-2025-012', 'Shanghai, China', 'TRACK-026', '2025-11-18', '2025-12-05', '2025-12-05', 'PO-2025-012'),
+('SHIP-2025-013', 'Taipei, Taiwan', 'TRACK-027', '2025-12-05', '2025-12-18', '2025-12-18', 'PO-2025-013');
+
+-- ================================================================
+-- 17. SHIPMENT_TO_WAREHOUSE DATA - Warehouse destinations
+-- ================================================================
+DELETE FROM ShipmentToWarehouse;
+INSERT INTO ShipmentToWarehouse (ShipID, WID) VALUES
+('SHIP-2024-001', 'WH-SG-001'),
+('SHIP-2024-002', 'WH-LA-001'),
+('SHIP-2024-003', 'WH-LA-002'),
+('SHIP-2024-004', 'WH-SG-001'),
+('SHIP-2024-005', 'WH-BKK-001'),
+('SHIP-2024-006', 'WH-BKK-001'),
+('SHIP-2024-007', 'WH-BKK-001'),
+('SHIP-2024-008', 'WH-BKK-001'),
+('SHIP-2024-009', 'WH-BKK-001'),
+('SHIP-2024-010', 'WH-BKK-001'),
+('SHIP-2024-011', 'WH-BKK-001'),
+('SHIP-2024-012', 'WH-BKK-001'),
+('SHIP-2024-013', 'WH-LA-001'),
+('SHIP-2024-014', 'WH-SG-002'),
+('SHIP-2025-001', 'WH-SG-001'),
+('SHIP-2025-002', 'WH-LA-001'),
+('SHIP-2025-003', 'WH-SG-003'),
+('SHIP-2025-004', 'WH-BKK-001'),
+('SHIP-2025-005', 'WH-BKK-001'),
+('SHIP-2025-006', 'WH-BKK-001'),
+('SHIP-2025-007-DELAYED', 'WH-LA-002'),
+('SHIP-2025-008-DELAYED', 'WH-LA-001'),
+('SHIP-2025-009', 'WH-BKK-001'),
+('SHIP-2025-010', 'WH-BKK-001'),
+('SHIP-2025-011', 'WH-SG-001'),
+('SHIP-2025-012', 'WH-SG-002'),
+('SHIP-2025-013', 'WH-LA-002');
+
+-- ================================================================
+-- 18. ORDER_ITEM DATA - Line items in purchase orders
+-- ================================================================
+DELETE FROM OrderItem;
+INSERT INTO OrderItem (Serial#, OID, ExArrDate, OrderedQty, UnitPrice) VALUES
+('ITEM-001', 'PO-2024-001', '2024-01-05', 10, 800.00),
+('ITEM-002', 'PO-2024-001', '2024-01-05', 5, 800.00),
+('ITEM-003', 'PO-2024-002', '2024-01-15', 100, 15.50),
+('ITEM-004', 'PO-2024-003', '2024-01-25', 25, 75.00),
+('ITEM-005', 'PO-2024-004', '2024-02-10', 30, 250.00),
+('ITEM-006', 'PO-2024-005', '2024-02-20', 200, 5.00),
+('ITEM-007', 'PO-2024-006', '2024-03-01', 80, 15.00),
+('ITEM-008', 'PO-2024-007', '2024-03-15', 40, 25.00),
+('ITEM-009', 'PO-2024-008', '2024-10-05', 200, 5.00),
+('ITEM-010', 'PO-2024-009', '2024-10-15', 400, 3.00),
+('ITEM-011', 'PO-2024-010', '2024-10-25', 150, 8.00),
+('ITEM-012', 'PO-2024-011', '2024-11-10', 300, 5.00),
+('ITEM-013', 'PO-2024-012', '2024-11-20', 250, 3.00),
+('ITEM-014', 'PO-2024-013', '2024-12-01', 100, 12.00),
+('ITEM-015', 'PO-2024-014', '2024-12-15', 80, 15.00),
+('ITEM-001', 'PO-2025-001', '2025-01-08', 15, 800.00),
+('ITEM-003', 'PO-2025-002', '2025-01-18', 120, 15.50),
+('ITEM-005', 'PO-2025-003', '2025-02-12', 40, 250.00),
+('ITEM-007', 'PO-2025-004', '2025-02-22', 250, 5.00),
+('ITEM-008', 'PO-2025-005', '2025-03-05', 100, 15.00),
+('ITEM-006', 'PO-2025-006', '2025-03-18', 35, 75.00),
+('ITEM-009', 'PO-2025-007', '2025-10-08', 200, 5.00),
+('ITEM-010', 'PO-2025-008', '2025-10-18', 300, 5.00),
+('ITEM-012', 'PO-2025-009', '2025-10-28', 150, 8.00),
+('ITEM-014', 'PO-2025-010', '2025-11-12', 300, 5.00),
+('ITEM-015', 'PO-2025-011', '2025-11-22', 250, 3.00),
+('ITEM-001', 'PO-2025-012', '2025-12-05', 100, 12.00),
+('ITEM-003', 'PO-2025-013', '2025-12-18', 80, 15.00);
+
+-- ================================================================
+-- 19. SHIP_ITEM DATA - Items in shipments
+-- ================================================================
+DELETE FROM ShipItem;
+INSERT INTO ShipItem (Serial#, ShipID, ExArrDate, ShippedQty) VALUES
+('ITEM-001', 'SHIP-2024-001', '2024-01-05', 10),
+('ITEM-002', 'SHIP-2024-001', '2024-01-05', 5),
+('ITEM-003', 'SHIP-2024-002', '2024-01-15', 100),
+('ITEM-004', 'SHIP-2024-003', '2024-01-25', 25),
+('ITEM-005', 'SHIP-2024-004', '2024-02-10', 30),
+('ITEM-006', 'SHIP-2024-005', '2024-02-20', 200),
+('ITEM-007', 'SHIP-2024-006', '2024-03-01', 80),
+('ITEM-008', 'SHIP-2024-007', '2024-03-15', 40),
+('ITEM-009', 'SHIP-2024-008', '2024-10-05', 200),
+('ITEM-010', 'SHIP-2024-009', '2024-10-15', 400),
+('ITEM-011', 'SHIP-2024-010', '2024-10-25', 150),
+('ITEM-012', 'SHIP-2024-011', '2024-11-10', 300),
+('ITEM-013', 'SHIP-2024-012', '2024-11-20', 250),
+('ITEM-014', 'SHIP-2024-013', '2024-12-01', 100),
+('ITEM-015', 'SHIP-2024-014', '2024-12-15', 80),
+('ITEM-001', 'SHIP-2025-001', '2025-01-08', 15),
+('ITEM-003', 'SHIP-2025-002', '2025-01-18', 120),
+('ITEM-005', 'SHIP-2025-003', '2025-02-12', 40),
+('ITEM-007', 'SHIP-2025-004', '2025-02-22', 250),
+('ITEM-008', 'SHIP-2025-005', '2025-03-05', 100),
+('ITEM-006', 'SHIP-2025-006', '2025-03-18', 35),
+('ITEM-009', 'SHIP-2025-007-DELAYED', '2025-10-08', 200),
+('ITEM-010', 'SHIP-2025-008-DELAYED', '2025-10-18', 300),
+('ITEM-012', 'SHIP-2025-009', '2025-10-28', 150),
+('ITEM-014', 'SHIP-2025-010', '2025-11-12', 300),
+('ITEM-015', 'SHIP-2025-011', '2025-11-22', 250),
+('ITEM-001', 'SHIP-2025-012', '2025-12-05', 100),
+('ITEM-003', 'SHIP-2025-013', '2025-12-18', 80);
+
+-- ================================================================
+-- 20. SUPPLIER_HAS_SHIPMENT DATA - Supplier-Shipment relationships
+-- ================================================================
+DELETE FROM SupplierHasShipment;
+INSERT INTO SupplierHasShipment (SupID, ShipID) VALUES
+('SUP001', 'SHIP-2024-001'),
+('SUP002', 'SHIP-2024-002'),
+('SUP006', 'SHIP-2024-003'),
+('SUP001', 'SHIP-2024-004'),
+('SUP003', 'SHIP-2024-005'),
+('SUP004', 'SHIP-2024-006'),
+('SUP004', 'SHIP-2024-007'),
+('SUP004', 'SHIP-2024-008'),
+('SUP004', 'SHIP-2024-009'),
+('SUP004', 'SHIP-2024-010'),
+('SUP004', 'SHIP-2024-011'),
+('SUP004', 'SHIP-2024-012'),
+('SUP006', 'SHIP-2024-013'),
+('SUP002', 'SHIP-2024-014'),
+('SUP001', 'SHIP-2025-001'),
+('SUP002', 'SHIP-2025-002'),
+('SUP005', 'SHIP-2025-003'),
+('SUP003', 'SHIP-2025-004'),
+('SUP004', 'SHIP-2025-005'),
+('SUP003', 'SHIP-2025-006'),
+('SUP008', 'SHIP-2025-007-DELAYED'),
+('SUP008', 'SHIP-2025-008-DELAYED'),
+('SUP004', 'SHIP-2025-009'),
+('SUP004', 'SHIP-2025-010'),
+('SUP004', 'SHIP-2025-011'),
+('SUP001', 'SHIP-2025-012'),
+('SUP002', 'SHIP-2025-013');
+
+-- ================================================================
+-- 21. INVENTORY DATA - Warehouse inventory
+-- ================================================================
+DELETE FROM Inventory;
+INSERT INTO Inventory (Serial#, PID, WID, CID, rQty, hQty, sQty, oQty, Location, Movement, Reasons) VALUES
+('ITEM-001', 'P001', 'WH-SG-001', 'C001', 0, 15, 15, 0, 'A1-R1-B01', 'Receipt', 'Received from inbound shipment'),
+('ITEM-002', 'P001', 'WH-SG-001', 'C001', 0, 10, 10, 0, 'A1-R1-B02', 'Receipt', 'Received from inbound shipment'),
+('ITEM-003', 'P002', 'WH-LA-001', 'C001', 50, 150, 100, 0, 'A1-R2-B01', 'Putaway', 'Putaway from receiving'),
+('ITEM-004', 'P003', 'WH-LA-002', 'C002', 30, 120, 90, 0, 'A1-R2-B02', 'Pick', 'Allocated to order'),
+('ITEM-005', 'P004', 'WH-BKK-001', 'C004', 20, 80, 60, 0, 'A1-R3-B01', 'Receipt', 'Received from inbound shipment'),
+('ITEM-006', 'P005', 'WH-BKK-001', 'C005', 150, 400, 250, 0, 'B1-R1-B01', 'Receipt', 'Received from inbound shipment'),
+('ITEM-007', 'P006', 'WH-SG-002', 'C009', 100, 300, 200, 0, 'A1-R1-B01', 'Receipt', 'Received from inbound shipment'),
+('ITEM-008', 'P007', 'WH-BKK-001', 'C005', 200, 600, 400, 0, 'B1-R2-B01', 'Receipt', 'Received from inbound shipment'),
+('ITEM-009', 'P008', 'WH-SG-001', 'C010', 50, 150, 100, 0, 'A1-R3-B02', 'Putaway', 'Putaway from receiving'),
+('ITEM-010', 'P009', 'WH-BKK-001', 'C004', 40, 120, 80, 0, 'C1-R1-B01', 'Pick', 'Allocated to order');
+
+-- ================================================================
+-- 22. DELIVERY DATA - Last-mile deliveries
+-- ================================================================
+DELETE FROM DELIVERY;
+INSERT INTO DELIVERY (Delivery_Date, RID, VID, WID, ShipID) VALUES
+('2026-03-26', 'R001', 'V001', 'WH-SG-001', 'SHIP-2025-001'),
+('2026-03-27', 'R002', 'V002', 'WH-LA-001', 'SHIP-2025-002'),
+('2026-03-28', 'R003', 'V003', 'WH-BKK-001', 'SHIP-2025-005');
+
+-- ================================================================
+-- DATA GENERATION COMPLETE
+-- ================================================================
+-- Summary of streamlined data:
+-- - 12 Clients
+-- - 6 Warehouses (3 Singapore, 2 LA, 1 Bangkok)
+-- - 10 Products
+-- - 8 Suppliers (including SUP005 Singapore-only)
+-- - 27 Purchase Orders (2024-2025)
+-- - 27 Shipments (including 2 delayed from Shanghai)
+-- - 28 Order Items
+-- - 28 Ship Items
+-- - Data optimized for all 7 queries
+-- ================================================================

@@ -1,9 +1,12 @@
-SELECT 
-    EXTRACT(YEAR FROM Order_date) AS Order_Year,
-    EXTRACT(MONTH FROM Order_date) AS Order_Month,
-    COUNT(OID) AS PO_Count
+SELECT TOP 3
+    YEAR(OrderDate)  AS Order_Year,
+    MONTH(OrderDate) AS Order_Month,
+    COUNT(OID)       AS PO_Count
 FROM PO
-WHERE Order_date >= '2024-01-01' AND Order_date <= '2025-12-31'
-GROUP BY 1, 2
-ORDER BY PO_Count DESC
-LIMIT 3;
+WHERE OrderDate >= '2024-01-01'
+  AND OrderDate <= '2025-12-31'
+GROUP BY
+    YEAR(OrderDate),
+    MONTH(OrderDate)
+ORDER BY
+    PO_Count DESC;

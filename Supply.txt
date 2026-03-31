@@ -2,7 +2,7 @@ CREATE TABLE Supply (
     PID VARCHAR(30),
     SupID VARCHAR(30),
     CID VARCHAR(30),
-    Contract_Start_Date DATE,
-    Contract_End_Date DATE,
-    PRIMARY KEY (PID, SupID, CID, Contract_Start_Date, Contract_End_Date)
+    ContractStartDate DATE,
+    ContractEndDate DATE,
+    PRIMARY KEY (PID, SupID, CID, ContractStartDate, ContractEndDate)
 );
