@@ -4,5 +4,5 @@ CREATE TABLE Supplier (
     Country VARCHAR(255),
     Name VARCHAR(255),
     PaymentTerms VARCHAR(255),
-    LeadTime INT
+    LeadTime_Days INT
 );
