@@ -2,10 +2,10 @@ WITH WarehouseBusiness AS (
     SELECT 
         sw.WID, 
         cp.CID, 
-        SUM(si.Shipped_Qty * oi.Unit_Price) AS Total_Business_Value
+        SUM(si.ShippedQty * oi.UnitPrice) AS Total_Business_Value
     FROM ShipmentToWarehouse sw
-    JOIN Shipment s ON sw.ShipID = s.SID
-    JOIN ShipItem si ON s.SID = si.ShipID
+    JOIN Shipment s ON sw.ShipID = s.ShipID
+    JOIN ShipItem si ON s.ShipID = si.ShipID
     JOIN OrderItem oi ON (si.Serial# = oi.Serial# AND s.OID = oi.OID)
     JOIN ClientHasPO cp ON s.OID = cp.OID
     GROUP BY sw.WID, cp.CID
