@@ -34,7 +34,7 @@ INSERT INTO ShipmentToWarehouse (WID, ShipID) VALUES
 ('W0003','S000012');
 
 -- 3) OrderItem (note: using Unit_Price to match your query)
-INSERT INTO OrderItem ("Serial#", OID, ExArrDate, OrderedQty, Unit_Price) VALUES
+INSERT INTO OrderItem ('Serial#', OID, ExArrDate, OrderedQty, UnitPrice) VALUES
 -- W0001 (Warehouse 1)
 ('I000001','O000001','2026-04-15',20,100.00),
 ('I000002','O000001','2026-04-15',10,120.00),
