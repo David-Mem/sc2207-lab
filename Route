@@ -1,5 +1,5 @@
 CREATE TABLE Route(
-    RID VARCHAR(50),
+    RID VARCHAR(30),
     Distance DECIMAL(8, 2),
     Total_Stops INT, 
     Status VARCHAR(100), 

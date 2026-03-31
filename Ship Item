@@ -1,6 +1,6 @@
 CREATE TABLE ShipItem(
-  Serial# VARCHAR(50),
-  ShipID VARCHAR(50),
+  Serial# VARCHAR(30),
+  ShipID VARCHAR(30),
   ExArrDate DATE,
   ShippedQty INT NOT NULL,
   PRIMARY KEY (Serial#, ShipID)
