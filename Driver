@@ -4,6 +4,4 @@ CREATE TABLE Driver (
     LicenseNo VARCHAR(30) NOT NULL,
     LicenseExpiration DATE NOT NULL,
     VID VARCHAR(30) NOT NULL,
-    FOREIGN KEY (SID) REFERENCES Staff(SID),
-    FOREIGN KEY (VID) REFERENCES Vehicle(VID)
 );

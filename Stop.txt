@@ -1,5 +1,5 @@
 CREATE TABLE Stop(
-    RID VARCHAR(50),
+    RID VARCHAR(30),
     Sequence INT, 
     Est_Arr_Time TIMESTAMP, 
     Actual_Arr_Time TIMESTAMP,

@@ -2,12 +2,6 @@ CREATE TABLE SupplierHasPO (
     OID VARCHAR(50) NOT NULL,
     SupID VARCHAR(50) NOT NULL,
     PRIMARY KEY (OID, SupID),
-    -- Linking to the existing PurchaseOrder table
-    FOREIGN KEY (OID) REFERENCES PurchaseOrder(PO_Number)
-        ON DELETE CASCADE ON UPDATE CASCADE,
-    -- Linking to the Supplier table
-    FOREIGN KEY (SupID) REFERENCES Supplier(SupID)
-        ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 -- Dummy data for SupplierHasPO

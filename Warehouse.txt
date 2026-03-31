@@ -1,5 +1,5 @@
 CREATE TABLE Warehouse(
-    WID VARCHAR(50),
+    WID VARCHAR(30),
     Address VARCHAR(255),
     Size FLOAT,
     Temperature FLOAT, 

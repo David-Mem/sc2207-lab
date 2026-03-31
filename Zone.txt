@@ -1,6 +1,6 @@
 CREATE TABLE Zone(
-    WID VARCHAR(50), 
-    Location VARCHAR(100),
+    WID VARCHAR(30), 
+    Location VARCHAR(255),
     Code INT, 
     PRIMARY KEY(WID, Location));
 
