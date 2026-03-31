@@ -1,0 +1,13 @@
+SELECT DISTINCT s.SupID, s.Name
+FROM Supplier s
+JOIN SupplierHasShipment shs ON s.SupID = shs.SupID
+JOIN ShipmentToWarehouse sw ON shs.ShipID = sw.ShipID
+JOIN Warehouse w ON sw.WID = w.WID
+WHERE w.Address LIKE '%Singapore%'
+AND s.SupID NOT IN (
+    SELECT shs2.SupID
+    FROM SupplierHasShipment shs2
+    JOIN ShipmentToWarehouse sw2 ON shs2.ShipID = sw2.ShipID
+    JOIN Warehouse w2 ON sw2.WID = w2.WID
+    WHERE w2.Address NOT LIKE '%Singapore%'
+);

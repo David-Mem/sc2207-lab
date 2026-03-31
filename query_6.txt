@@ -1,0 +1,27 @@
+SELECT s.SupID, s.Name
+FROM Supplier s
+WHERE 
+    -- No shipments to Thailand
+    NOT EXISTS (
+        SELECT 1
+        FROM SupplierHasShipment shs
+        JOIN ShipmentToWarehouse sw ON shs.ShipID = sw.ShipID
+        JOIN Warehouse w ON sw.WID = w.WID
+        WHERE shs.SupID = s.SupID 
+          AND w.Address LIKE '%Thailand%'
+    )
+    -- Supplies all products currently in Singapore
+    AND NOT EXISTS (
+        -- Find if there is any PID in a Singapore warehouse
+        SELECT DISTINCT i.PID
+        FROM Inventory i
+        JOIN Warehouse w ON i.WID = w.WID
+        WHERE w.Address LIKE '%Singapore%'
+        AND NOT EXISTS (
+            -- that is NOT in this supplier's supply list
+            SELECT 1
+            FROM Supply sp
+            WHERE sp.PID = i.PID 
+              AND sp.SupID = s.SupID
+        )
+    );
