@@ -1,8 +1,8 @@
 CREATE TABLE Product (
-    PID INT NOT NULL,
+    PID VARCHAR(50) NOT NULL,
     ItemSerial VARCHAR(50) NOT NULL,
     Name VARCHAR(255) NOT NULL,
-    Brand VARCHAR(100),
+    Brand VARCHAR(255),
     Category VARCHAR(100),
     UnitCost DECIMAL(10, 2) NOT NULL,
     RetailPrice DECIMAL(10, 2) NOT NULL,
