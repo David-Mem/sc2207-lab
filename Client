@@ -4,5 +4,5 @@ CREATE TABLE Client (
     CompanyName VARCHAR(255),
     ContactPerson VARCHAR(255),
     StartDate DATE,
-    ServiceTier VARCHAR(100)
+    ServiceTier VARCHAR(100)--Gold, Silver, Bronze
 );
