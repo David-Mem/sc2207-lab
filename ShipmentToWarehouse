@@ -1,0 +1,5 @@
+CREATE TABLE ShipmentToWarehouse(
+  ShipID VARCHAR(30),
+  WID VARCHAR(30),
+  PRIMARY KEY(ShipID, WID)
+);
