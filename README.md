@@ -15,6 +15,10 @@ This branch contains a cleaned, rerunnable SQL Server package for the GlobalLogi
 9. `queries/query_7_major_delay_origins.sql`
 10. `GlobalLogistics_Print_All_Tables.sql`
 
+If you want all Appendix B outputs in one go, run:
+
+- `queries/run_all_queries.sql`
+
 Optional checks:
 
 - `checks/01_table_audit.sql`

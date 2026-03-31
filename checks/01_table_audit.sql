@@ -1,46 +1,55 @@
 SET NOCOUNT ON;
 GO
 
+IF OBJECT_ID('tempdb..#RowCounts') IS NOT NULL DROP TABLE #RowCounts;
+IF OBJECT_ID('tempdb..#PrimaryKeys') IS NOT NULL DROP TABLE #PrimaryKeys;
+IF OBJECT_ID('tempdb..#OutgoingFKs') IS NOT NULL DROP TABLE #OutgoingFKs;
+IF OBJECT_ID('tempdb..#IncomingFKs') IS NOT NULL DROP TABLE #IncomingFKs;
+IF OBJECT_ID('tempdb..#ColumnCounts') IS NOT NULL DROP TABLE #ColumnCounts;
+GO
+
+SELECT
+    t.object_id,
+    SUM(p.rows) AS TotalRows
+INTO #RowCounts
+FROM sys.tables t
+JOIN sys.partitions p
+    ON t.object_id = p.object_id
+WHERE p.index_id IN (0, 1)
+GROUP BY t.object_id;
+
+SELECT DISTINCT
+    kc.parent_object_id AS object_id
+INTO #PrimaryKeys
+FROM sys.key_constraints kc
+WHERE kc.type = 'PK';
+
+SELECT
+    parent_object_id AS object_id,
+    COUNT(*) AS OutgoingForeignKeyCount
+INTO #OutgoingFKs
+FROM sys.foreign_keys
+GROUP BY parent_object_id;
+
+SELECT
+    referenced_object_id AS object_id,
+    COUNT(*) AS IncomingForeignKeyCount
+INTO #IncomingFKs
+FROM sys.foreign_keys
+GROUP BY referenced_object_id;
+
+SELECT
+    object_id,
+    COUNT(*) AS ColumnCount
+INTO #ColumnCounts
+FROM sys.columns
+GROUP BY object_id;
+GO
+
 SELECT
     DB_NAME() AS CurrentDatabase,
     SYSDATETIME() AS AuditRunTime;
 
-;WITH RowCounts AS (
-    SELECT
-        t.object_id,
-        SUM(p.rows) AS TotalRows
-    FROM sys.tables t
-    JOIN sys.partitions p
-        ON t.object_id = p.object_id
-    WHERE p.index_id IN (0, 1)
-    GROUP BY t.object_id
-),
-PrimaryKeys AS (
-    SELECT DISTINCT kc.parent_object_id AS object_id
-    FROM sys.key_constraints kc
-    WHERE kc.type = 'PK'
-),
-OutgoingFKs AS (
-    SELECT
-        parent_object_id AS object_id,
-        COUNT(*) AS OutgoingForeignKeyCount
-    FROM sys.foreign_keys
-    GROUP BY parent_object_id
-),
-IncomingFKs AS (
-    SELECT
-        referenced_object_id AS object_id,
-        COUNT(*) AS IncomingForeignKeyCount
-    FROM sys.foreign_keys
-    GROUP BY referenced_object_id
-),
-ColumnCounts AS (
-    SELECT
-        object_id,
-        COUNT(*) AS ColumnCount
-    FROM sys.columns
-    GROUP BY object_id
-)
 SELECT
     s.name AS SchemaName,
     t.name AS TableName,
@@ -52,15 +61,15 @@ SELECT
 FROM sys.tables t
 JOIN sys.schemas s
     ON t.schema_id = s.schema_id
-LEFT JOIN ColumnCounts cc
+LEFT JOIN #ColumnCounts cc
     ON t.object_id = cc.object_id
-LEFT JOIN PrimaryKeys pk
+LEFT JOIN #PrimaryKeys pk
     ON t.object_id = pk.object_id
-LEFT JOIN OutgoingFKs ofk
+LEFT JOIN #OutgoingFKs ofk
     ON t.object_id = ofk.object_id
-LEFT JOIN IncomingFKs ifk
+LEFT JOIN #IncomingFKs ifk
     ON t.object_id = ifk.object_id
-LEFT JOIN RowCounts rc
+LEFT JOIN #RowCounts rc
     ON t.object_id = rc.object_id
 ORDER BY s.name, t.name;
 
@@ -127,7 +136,7 @@ SELECT
 FROM sys.tables t
 JOIN sys.schemas s
     ON t.schema_id = s.schema_id
-LEFT JOIN RowCounts rc
+LEFT JOIN #RowCounts rc
     ON t.object_id = rc.object_id
 WHERE ISNULL(rc.TotalRows, 0) = 0
 ORDER BY s.name, t.name;
@@ -151,11 +160,18 @@ SELECT
 FROM sys.tables t
 JOIN sys.schemas s
     ON t.schema_id = s.schema_id
-LEFT JOIN OutgoingFKs ofk
+LEFT JOIN #OutgoingFKs ofk
     ON t.object_id = ofk.object_id
-LEFT JOIN IncomingFKs ifk
+LEFT JOIN #IncomingFKs ifk
     ON t.object_id = ifk.object_id
 WHERE ISNULL(ofk.OutgoingForeignKeyCount, 0) = 0
   AND ISNULL(ifk.IncomingForeignKeyCount, 0) = 0
 ORDER BY s.name, t.name;
+GO
+
+DROP TABLE #RowCounts;
+DROP TABLE #PrimaryKeys;
+DROP TABLE #OutgoingFKs;
+DROP TABLE #IncomingFKs;
+DROP TABLE #ColumnCounts;
 GO
