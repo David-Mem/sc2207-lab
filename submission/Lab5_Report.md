@@ -641,95 +641,516 @@ Use the table outputs produced from the final rerun. If you are converting this 
 
 ### Client
 
-Paste the output from `Result Set Batch 2 - Query 1` here.
+```text
+CID         CompanyName            ContactPerson      StartDate   ServiceTier
+----------  ---------------------  -----------------  ----------  -----------
+C001        Amazon Singapore       John Smith         2020-01-15  Gold
+C002        Lazada Southeast Asia  Sarah Johnson      2019-06-22  Gold
+C003        Shopee Philippines     Michael Chen       2021-03-10  Silver
+C004        TikTok Shop Thailand   Emily Rodriguez    2018-09-30  Platinum
+C005        AEON Thailand          David Wilson       2018-11-14  Gold
+C006        Zalora Vietnam         Lisa Anderson      2022-02-14  Silver
+C007        DHL eCommerce          James Thompson     2019-04-08  Platinum
+C008        Kerry Logistics        Jennifer Lee       2020-10-25  Gold
+C009        Robinsons Singapore    Robert Martinez    2020-03-25  Silver
+C010        Takashimaya Singapore  Amanda Clark       2019-08-14  Platinum
+C011        SM Malls Philippines   Christopher White  2021-05-11  Gold
+C012        Central World Bangkok  Michelle Garcia    2019-07-17  Gold
+```
 
 ### Supplier
 
-Paste the output from `Result Set Batch 2 - Query 2` here.
+```text
+SupID       Country      Name                       PaymentTerms  LeadTimeDays
+----------  -----------  -------------------------  ------------  ------------
+SUP001      China        TechImports Ltd            Net 30        30
+SUP002      Taiwan       Electronics Factory        Net 45        25
+SUP003      Vietnam      TextileCorp Vietnam        Net 30        20
+SUP004      Thailand     Bangkok Garment Works      Net 30        15
+SUP005      Singapore    Singapore Suppliers Group  Net 15        10
+SUP006      South Korea  Seoul Electronics          Net 45        28
+SUP007      Japan        Tokyo Manufacturing        Net 60        35
+SUP008      China        Shanghai Imports Co        Net 30        32
+```
 
 ### Warehouse
 
-Paste the output from `Result Set Batch 2 - Query 3` here.
+```text
+WID         Address                                  Size        Temperature  Security
+----------  ---------------------------------------  ----------  -----------  ----------
+WH-BKK-001  123 Soi Sukhumvit 38, Bangkok, Thailand  28000       25           4
+WH-LA-001   1234 Industrial Blvd, Los Angeles, USA   50000       22.5         5
+WH-LA-002   5678 Freight Lane, Los Angeles, USA      35000       22           4
+WH-SG-001   26 Nanyang Avenue, Singapore             40000.25    23.6         5
+WH-SG-002   03 Shenton Way, Singapore                20000       24           4
+WH-SG-003   25 Broadway, Singapore                   10492       24.1         3
+```
 
 ### Product
 
-Paste the output from `Result Set Batch 2 - Query 4` here.
+```text
+PID         ItemSerial    Name                  Brand         Category              UnitCost    RetailPrice  Length      Width       Height      HandlingRequirements
+----------  ------------  --------------------  ------------  --------------------  ----------  -----------  ----------  ----------  ----------  --------------------------------
+P001        SN-ELEC-001   Laptop Pro 15         TechBrand     Electronics           800.00      1200.00      35.79       24.59       1.62        Fragile, Handle with care
+P002        SN-ELEC-002   Wireless Mouse        ClickMaster   Computer Accessories  15.50       29.99        10.00       6.00        4.00        NULL
+P003        SN-ELEC-003   Mechanical Keyboard   TypeFast      Computer Accessories  75.00       130.00       44.00       13.00       3.50        Keep Dry
+P004        SN-ELEC-004   4K Monitor 27 inch    ViewSharp     Electronics           250.00      399.99       61.00       36.00       5.00        Fragile, Screen side up
+P005        SN-CLOTH-001  Cotton T-Shirt        FashionBrand  Apparel               5.00        15.00        30.00       25.00       1.00        NULL
+P006        SN-CLOTH-002  Denim Jeans           StyleHub      Apparel               15.00       45.00        32.00       30.00       2.00        NULL
+P007        SN-FOOD-001   Instant Noodles Pack  FoodBrand     Food & Beverages      0.50        1.50         20.00       15.00       5.00        Keep Dry
+P008        SN-FOOD-002   Coffee Beans 500g     BeansCo       Food & Beverages      8.00        20.00        15.00       10.00       10.00       Temperature Controlled, Keep Dry
+P009        SN-HOME-001   Bedding Set           HomeDecor     Home & Garden         20.00       60.00        40.00       30.00       10.00       NULL
+P010        SN-WATCH-001  Smart Watch           TechTime      Electronics           50.00       150.00       8.00        8.00        8.00        Fragile, High-Value
+```
 
 ### Vehicle
 
-Paste the output from `Result Set Batch 2 - Query 5` here.
+```text
+VID         Type                License        CapacityWgt  CapacityVol
+----------  ------------------  -------------  -----------  -----------
+V001        Van                 SG-VAN-001     2000.00      12.00
+V002        Truck               SG-TRUCK-001   5000.00      35.00
+V003        Refrigerated Truck  SG-REFRIG-001  3500.00      20.00
+V004        Van                 LA-VAN-001     2000.00      12.00
+V005        Truck               LA-TRUCK-001   5500.00      40.00
+V006        Truck               BKK-TRUCK-001  5000.00      35.00
+```
 
 ### Zone
 
-Paste the output from `Result Set Batch 2 - Query 6` here.
+```text
+WID         Location       Code
+----------  -------------  ----------
+WH-BKK-001  Receiving      1
+WH-LA-001   Receiving      1
+WH-LA-002   Receiving      1
+WH-SG-001   Bulk Storage   2
+WH-SG-001   Packing Area   4
+WH-SG-001   Picking Area   3
+WH-SG-001   Receiving      1
+WH-SG-001   Shipping Dock  5
+WH-SG-002   Bulk Storage   2
+WH-SG-002   Receiving      1
+WH-SG-003   Receiving      1
+```
 
 ### Supply
 
-Paste the output from `Result Set Batch 2 - Query 7` here.
+```text
+PID         SupID       CID         ContractStartDate  ContractEndDate
+----------  ----------  ----------  -----------------  ---------------
+P001        SUP001      C001        2020-01-15         2026-12-31
+P002        SUP001      C001        2020-01-15         2026-12-31
+P003        SUP001      C011        2021-05-11         2026-12-31
+P004        SUP002      C001        2020-02-01         2026-12-31
+P010        SUP002      C007        2019-05-01         2026-12-31
+P005        SUP003      C006        2022-02-14         2026-12-31
+P006        SUP003      C006        2022-02-14         2026-12-31
+P005        SUP004      C004        2018-10-01         2026-12-31
+P007        SUP004      C004        2018-09-30         2026-12-31
+P008        SUP004      C005        2018-11-14         2026-12-31
+P001        SUP005      C001        2020-01-15         2026-12-31
+P001        SUP005      C009        2020-03-25         2026-12-31
+P006        SUP005      C009        2020-03-25         2026-12-31
+P008        SUP005      C010        2019-08-14         2026-12-31
+P009        SUP005      C010        2019-08-14         2026-12-31
+P002        SUP006      C002        2019-06-22         2026-12-31
+P010        SUP006      C008        2020-10-25         2026-12-31
+P001        SUP008      C002        2020-01-01         2026-12-31
+P003        SUP008      C007        2020-02-01         2026-12-31
+```
 
 ### Staff
 
-Paste the output from `Result Set Batch 2 - Query 8` here.
+```text
+SID         Name         Type             HireDate
+----------  -----------  ---------------  ----------
+DRV001      Gavin Tan    Driver           2020-09-01
+DRV002      Hannah Ong   Driver           2020-10-12
+DRV003      Isaac Chua   Driver           2021-04-20
+DRV004      Jasmine Ho   Driver           2021-08-18
+DRV005      Kelvin Yeo   Driver           2022-03-03
+DRV006      Lydia Ng     Driver           2022-11-11
+EMP001      Alice Tan    Warehouse Staff  2021-01-15
+EMP002      Brandon Lim  Warehouse Staff  2021-03-10
+EMP003      Cheryl Goh   Warehouse Staff  2021-06-21
+EMP004      Darren Lee   Warehouse Staff  2022-02-14
+EMP005      Elaine Koh   Warehouse Staff  2022-07-05
+EMP006      Farhan Noor  Warehouse Staff  2023-01-09
+```
 
 ### Employee
 
-Paste the output from `Result Set Batch 2 - Query 9` here.
+```text
+SID         Certification                       WID
+----------  ----------------------------------  ----------
+EMP001      Forklift Operator, Hazmat Handling  WH-SG-001
+EMP002      Forklift Operator                   WH-SG-002
+EMP003      Quality Inspector                   WH-SG-003
+EMP004      Forklift Operator, High Reach       WH-LA-001
+EMP005      Hazmat Handling                     WH-LA-002
+EMP006      Forklift Operator                   WH-BKK-001
+```
 
 ### Driver
 
-Paste the output from `Result Set Batch 2 - Query 10` here.
+```text
+SID         LicenseNo         LicenseExpiration  VID
+----------  ----------------  -----------------  ----------
+DRV001      SG-DRV-2019-001   2027-06-30         V001
+DRV002      SG-DRV-2020-002   2028-03-15         V002
+DRV003      SG-DRV-2020-003   2028-01-10         V003
+DRV004      LA-DRV-2019-001   2027-05-15         V004
+DRV005      LA-DRV-2018-002   2026-11-20         V005
+DRV006      BKK-DRV-2020-001  2028-08-30         V006
+```
 
 ### Route
 
-Paste the output from `Result Set Batch 2 - Query 11` here.
+```text
+RID         Distance    TotalStops  Status
+----------  ----------  ----------  ----------
+R001        15.50       5           Completed
+R002        22.30       8           Completed
+R003        18.90       6           Completed
+R004        25.50       10          Completed
+R005        14.20       4           Completed
+```
 
 ### Stop
 
-Paste the output from `Result Set Batch 2 - Query 12` here.
+```text
+RID         Sequence    EstArrTime               ActualArrTime
+----------  ----------  -----------------------  -----------------------
+R001        1           2026-03-26 08:00:00.000  2026-03-26 08:15:00.000
+R001        2           2026-03-26 09:00:00.000  2026-03-26 09:10:00.000
+R002        1           2026-03-27 08:30:00.000  2026-03-27 08:45:00.000
+R002        2           2026-03-27 10:00:00.000  2026-03-27 10:10:00.000
+R003        1           2026-03-28 09:00:00.000  2026-03-28 09:20:00.000
+```
 
 ### Item
 
-Paste the output from `Result Set Batch 2 - Query 13` here.
+```text
+Serial#     PID
+----------  ----------
+ITEM-001    P001
+ITEM-002    P001
+ITEM-003    P002
+ITEM-004    P003
+ITEM-005    P004
+ITEM-006    P005
+ITEM-007    P006
+ITEM-008    P007
+ITEM-009    P008
+ITEM-010    P009
+ITEM-011    P010
+ITEM-012    P002
+ITEM-013    P003
+ITEM-014    P004
+ITEM-015    P005
+```
 
 ### PO
 
-Paste the output from `Result Set Batch 2 - Query 14` here.
+```text
+OID          OrderDate   Status          Value
+-----------  ----------  --------------  ----------
+PO-2024-001  2024-01-05  Fully Received  25000.00
+PO-2024-002  2024-01-15  Fully Received  18000.00
+PO-2024-003  2024-01-25  Fully Received  22000.00
+PO-2024-004  2024-02-10  Fully Received  15000.00
+PO-2024-005  2024-02-20  Fully Received  20000.00
+PO-2024-006  2024-03-01  Fully Received  19000.00
+PO-2024-007  2024-03-15  Fully Received  23000.00
+PO-2024-008  2024-10-05  Fully Received  21000.00
+PO-2024-009  2024-10-15  Fully Received  24000.00
+PO-2024-010  2024-10-25  Fully Received  19500.00
+PO-2024-011  2024-11-10  Fully Received  26000.00
+PO-2024-012  2024-11-20  Fully Received  20500.00
+PO-2024-013  2024-12-01  Fully Received  23000.00
+PO-2024-014  2024-12-15  Fully Received  17750.00
+PO-2025-001  2025-01-08  Fully Received  20000.00
+PO-2025-002  2025-01-18  Fully Received  24500.00
+PO-2025-003  2025-02-12  Fully Received  27000.00
+PO-2025-004  2025-02-22  Fully Received  18500.00
+PO-2025-005  2025-03-05  Fully Received  25000.00
+PO-2025-006  2025-03-18  Fully Received  21500.00
+PO-2025-007  2025-10-08  Fully Received  22000.00
+PO-2025-008  2025-10-18  Fully Received  25500.00
+PO-2025-009  2025-10-28  Fully Received  21750.00
+PO-2025-010  2025-11-12  Fully Received  28500.00
+PO-2025-011  2025-11-22  Fully Received  23500.00
+PO-2025-012  2025-12-05  Fully Received  26500.00
+PO-2025-013  2025-12-18  Fully Received  20750.00
+```
 
 ### ClientHasPO
 
-Paste the output from `Result Set Batch 2 - Query 15` here.
+```text
+OID          CID
+-----------  ----------
+PO-2024-001  C001
+PO-2024-002  C002
+PO-2024-003  C007
+PO-2024-004  C001
+PO-2024-005  C003
+PO-2024-006  C004
+PO-2024-007  C005
+PO-2024-008  C005
+PO-2024-009  C004
+PO-2024-010  C012
+PO-2024-011  C004
+PO-2024-012  C005
+PO-2024-013  C007
+PO-2024-014  C002
+PO-2025-001  C001
+PO-2025-002  C002
+PO-2025-003  C001
+PO-2025-004  C003
+PO-2025-005  C004
+PO-2025-006  C006
+PO-2025-007  C004
+PO-2025-008  C005
+PO-2025-009  C012
+PO-2025-010  C004
+PO-2025-011  C005
+PO-2025-012  C001
+PO-2025-013  C002
+```
 
 ### SupplierHasPO
 
-Paste the output from `Result Set Batch 2 - Query 16` here.
+```text
+OID          SupID
+-----------  ----------
+PO-2024-001  SUP001
+PO-2024-002  SUP002
+PO-2024-003  SUP006
+PO-2024-004  SUP001
+PO-2024-005  SUP003
+PO-2024-006  SUP004
+PO-2024-007  SUP004
+PO-2024-008  SUP004
+PO-2024-009  SUP004
+PO-2024-010  SUP004
+PO-2024-011  SUP004
+PO-2024-012  SUP004
+PO-2024-013  SUP006
+PO-2024-014  SUP002
+PO-2025-001  SUP001
+PO-2025-002  SUP002
+PO-2025-003  SUP005
+PO-2025-004  SUP003
+PO-2025-005  SUP004
+PO-2025-006  SUP003
+PO-2025-007  SUP008
+PO-2025-008  SUP008
+PO-2025-009  SUP004
+PO-2025-010  SUP004
+PO-2025-011  SUP004
+PO-2025-012  SUP001
+PO-2025-013  SUP002
+```
 
 ### Shipment
 
-Paste the output from `Result Set Batch 2 - Query 17` here.
+```text
+ShipID                 OriLocation           Tracking#   ShipDate    ExArrDate   AcArrDate   OID
+---------------------  --------------------  ----------  ----------  ----------  ----------  -----------
+SHIP-2024-001          Shanghai, China       TRACK-001   2023-12-10  2024-01-05  2024-01-05  PO-2024-001
+SHIP-2024-002          Taipei, Taiwan        TRACK-002   2024-01-02  2024-01-15  2024-01-15  PO-2024-002
+SHIP-2024-003          Seoul, South Korea    TRACK-003   2024-01-10  2024-01-25  2024-01-25  PO-2024-003
+SHIP-2024-004          Shanghai, China       TRACK-004   2024-02-01  2024-02-10  2024-02-10  PO-2024-004
+SHIP-2024-005          Ho Chi Minh, Vietnam  TRACK-005   2024-02-05  2024-02-20  2024-02-20  PO-2024-005
+SHIP-2024-006          Bangkok, Thailand     TRACK-006   2024-02-15  2024-03-01  2024-03-01  PO-2024-006
+SHIP-2024-007          Bangkok, Thailand     TRACK-007   2024-02-28  2024-03-15  2024-03-15  PO-2024-007
+SHIP-2024-008          Bangkok, Thailand     TRACK-008   2024-09-25  2024-10-05  2024-10-05  PO-2024-008
+SHIP-2024-009          Bangkok, Thailand     TRACK-009   2024-10-05  2024-10-15  2024-10-15  PO-2024-009
+SHIP-2024-010          Bangkok, Thailand     TRACK-010   2024-10-15  2024-10-25  2024-10-25  PO-2024-010
+SHIP-2024-011          Bangkok, Thailand     TRACK-011   2024-10-25  2024-11-10  2024-11-10  PO-2024-011
+SHIP-2024-012          Bangkok, Thailand     TRACK-012   2024-11-05  2024-11-20  2024-11-20  PO-2024-012
+SHIP-2024-013          Seoul, South Korea    TRACK-013   2024-11-15  2024-12-01  2024-12-01  PO-2024-013
+SHIP-2024-014          Taipei, Taiwan        TRACK-014   2024-12-01  2024-12-15  2024-12-15  PO-2024-014
+SHIP-2025-001          Shanghai, China       TRACK-015   2024-12-20  2025-01-08  2025-01-08  PO-2025-001
+SHIP-2025-002          Taipei, Taiwan        TRACK-016   2025-01-05  2025-01-18  2025-01-18  PO-2025-002
+SHIP-2025-003          Singapore, Singapore  TRACK-017   2025-02-01  2025-02-12  2025-02-12  PO-2025-003
+SHIP-2025-004          Ho Chi Minh, Vietnam  TRACK-018   2025-02-08  2025-02-22  2025-02-22  PO-2025-004
+SHIP-2025-005          Bangkok, Thailand     TRACK-019   2025-02-20  2025-03-05  2025-03-05  PO-2025-005
+SHIP-2025-006          Ho Chi Minh, Vietnam  TRACK-020   2025-03-05  2025-03-18  2025-03-18  PO-2025-006
+SHIP-2025-007-DELAYED  Shanghai, China       TRACK-021   2024-09-01  2025-10-08  2026-04-15  PO-2025-007
+SHIP-2025-008-DELAYED  Shanghai, China       TRACK-022   2024-09-15  2025-10-18  2026-05-20  PO-2025-008
+SHIP-2025-009          Bangkok, Thailand     TRACK-023   2025-09-28  2025-10-28  2025-10-28  PO-2025-009
+SHIP-2025-010          Bangkok, Thailand     TRACK-024   2025-10-15  2025-11-12  2025-11-12  PO-2025-010
+SHIP-2025-011          Bangkok, Thailand     TRACK-025   2025-11-08  2025-11-22  2025-11-22  PO-2025-011
+SHIP-2025-012          Shanghai, China       TRACK-026   2025-11-18  2025-12-05  2025-12-05  PO-2025-012
+SHIP-2025-013          Taipei, Taiwan        TRACK-027   2025-12-05  2025-12-18  2025-12-18  PO-2025-013
+```
 
 ### ShipmentToWarehouse
 
-Paste the output from `Result Set Batch 2 - Query 18` here.
+```text
+ShipID                 WID
+---------------------  ----------
+SHIP-2024-001          WH-SG-001
+SHIP-2024-002          WH-LA-001
+SHIP-2024-003          WH-LA-002
+SHIP-2024-004          WH-SG-001
+SHIP-2024-005          WH-BKK-001
+SHIP-2024-006          WH-BKK-001
+SHIP-2024-007          WH-BKK-001
+SHIP-2024-008          WH-BKK-001
+SHIP-2024-009          WH-BKK-001
+SHIP-2024-010          WH-BKK-001
+SHIP-2024-011          WH-BKK-001
+SHIP-2024-012          WH-BKK-001
+SHIP-2024-013          WH-LA-001
+SHIP-2024-014          WH-SG-002
+SHIP-2025-001          WH-SG-001
+SHIP-2025-002          WH-LA-001
+SHIP-2025-003          WH-SG-003
+SHIP-2025-004          WH-BKK-001
+SHIP-2025-005          WH-BKK-001
+SHIP-2025-006          WH-BKK-001
+SHIP-2025-007-DELAYED  WH-LA-002
+SHIP-2025-008-DELAYED  WH-LA-001
+SHIP-2025-009          WH-BKK-001
+SHIP-2025-010          WH-BKK-001
+SHIP-2025-011          WH-SG-001
+SHIP-2025-012          WH-SG-002
+SHIP-2025-013          WH-LA-002
+```
 
 ### OrderItem
 
-Paste the output from `Result Set Batch 2 - Query 19` here.
+```text
+Serial#     OID          ExDelDate   OrderedQty  UnitPrice
+----------  -----------  ----------  ----------  ----------
+ITEM-001    PO-2024-001  2024-01-05  10          800.00
+ITEM-002    PO-2024-001  2024-01-05  5           800.00
+ITEM-003    PO-2024-002  2024-01-15  100         15.50
+ITEM-004    PO-2024-003  2024-01-25  25          75.00
+ITEM-005    PO-2024-004  2024-02-10  30          250.00
+ITEM-006    PO-2024-005  2024-02-20  200         5.00
+ITEM-007    PO-2024-006  2024-03-01  80          15.00
+ITEM-008    PO-2024-007  2024-03-15  40          25.00
+ITEM-009    PO-2024-008  2024-10-05  200         5.00
+ITEM-010    PO-2024-009  2024-10-15  400         3.00
+ITEM-011    PO-2024-010  2024-10-25  150         8.00
+ITEM-012    PO-2024-011  2024-11-10  300         5.00
+ITEM-013    PO-2024-012  2024-11-20  250         3.00
+ITEM-014    PO-2024-013  2024-12-01  100         12.00
+ITEM-015    PO-2024-014  2024-12-15  80          15.00
+ITEM-001    PO-2025-001  2025-01-08  15          800.00
+ITEM-003    PO-2025-002  2025-01-18  120         15.50
+ITEM-005    PO-2025-003  2025-02-12  40          250.00
+ITEM-007    PO-2025-004  2025-02-22  250         5.00
+ITEM-008    PO-2025-005  2025-03-05  100         15.00
+ITEM-006    PO-2025-006  2025-03-18  35          75.00
+ITEM-009    PO-2025-007  2025-10-08  200         5.00
+ITEM-010    PO-2025-008  2025-10-18  300         5.00
+ITEM-012    PO-2025-009  2025-10-28  150         8.00
+ITEM-014    PO-2025-010  2025-11-12  300         5.00
+ITEM-015    PO-2025-011  2025-11-22  250         3.00
+ITEM-001    PO-2025-012  2025-12-05  100         12.00
+ITEM-003    PO-2025-013  2025-12-18  80          15.00
+```
 
 ### ShipItem
 
-Paste the output from `Result Set Batch 2 - Query 20` here.
+```text
+Serial#     ShipID                 ExArrDate   ShippedQty
+----------  ---------------------  ----------  ----------
+ITEM-001    SHIP-2024-001          2024-01-05  10
+ITEM-002    SHIP-2024-001          2024-01-05  5
+ITEM-003    SHIP-2024-002          2024-01-15  100
+ITEM-004    SHIP-2024-003          2024-01-25  25
+ITEM-005    SHIP-2024-004          2024-02-10  30
+ITEM-006    SHIP-2024-005          2024-02-20  200
+ITEM-007    SHIP-2024-006          2024-03-01  80
+ITEM-008    SHIP-2024-007          2024-03-15  40
+ITEM-009    SHIP-2024-008          2024-10-05  200
+ITEM-010    SHIP-2024-009          2024-10-15  400
+ITEM-011    SHIP-2024-010          2024-10-25  150
+ITEM-012    SHIP-2024-011          2024-11-10  300
+ITEM-013    SHIP-2024-012          2024-11-20  250
+ITEM-014    SHIP-2024-013          2024-12-01  100
+ITEM-015    SHIP-2024-014          2024-12-15  80
+ITEM-001    SHIP-2025-001          2025-01-08  15
+ITEM-003    SHIP-2025-002          2025-01-18  120
+ITEM-005    SHIP-2025-003          2025-02-12  40
+ITEM-007    SHIP-2025-004          2025-02-22  250
+ITEM-008    SHIP-2025-005          2025-03-05  100
+ITEM-006    SHIP-2025-006          2025-03-18  35
+ITEM-009    SHIP-2025-007-DELAYED  2025-10-08  200
+ITEM-010    SHIP-2025-008-DELAYED  2025-10-18  300
+ITEM-012    SHIP-2025-009          2025-10-28  150
+ITEM-014    SHIP-2025-010          2025-11-12  300
+ITEM-015    SHIP-2025-011          2025-11-22  250
+ITEM-001    SHIP-2025-012          2025-12-05  100
+ITEM-003    SHIP-2025-013          2025-12-18  80
+```
 
 ### SupplierHasShipment
 
-Paste the output from `Result Set Batch 2 - Query 21` here.
+```text
+SupID       ShipID
+----------  ---------------------
+SUP001      SHIP-2024-001
+SUP001      SHIP-2024-004
+SUP001      SHIP-2025-001
+SUP001      SHIP-2025-012
+SUP002      SHIP-2024-002
+SUP002      SHIP-2024-014
+SUP002      SHIP-2025-002
+SUP002      SHIP-2025-013
+SUP003      SHIP-2024-005
+SUP003      SHIP-2025-004
+SUP003      SHIP-2025-006
+SUP004      SHIP-2024-006
+SUP004      SHIP-2024-007
+SUP004      SHIP-2024-008
+SUP004      SHIP-2024-009
+SUP004      SHIP-2024-010
+SUP004      SHIP-2024-011
+SUP004      SHIP-2024-012
+SUP004      SHIP-2025-005
+SUP004      SHIP-2025-009
+SUP004      SHIP-2025-010
+SUP004      SHIP-2025-011
+SUP005      SHIP-2025-003
+SUP006      SHIP-2024-003
+SUP006      SHIP-2024-013
+SUP008      SHIP-2025-007-DELAYED
+SUP008      SHIP-2025-008-DELAYED
+```
 
 ### Inventory
 
-Paste the output from `Result Set Batch 2 - Query 22` here.
+```text
+Serial#     PID         WID         CID         rQty        hQty        sQty        oQty        Location    Movement    Reasons
+----------  ----------  ----------  ----------  ----------  ----------  ----------  ----------  ----------  ----------  ------------------------------
+ITEM-005    P004        WH-BKK-001  C004        20          80          60          0           A1-R3-B01   Receipt     Received from inbound shipment
+ITEM-006    P005        WH-BKK-001  C005        150         400         250         0           B1-R1-B01   Receipt     Received from inbound shipment
+ITEM-008    P007        WH-BKK-001  C005        200         600         400         0           B1-R2-B01   Receipt     Received from inbound shipment
+ITEM-010    P009        WH-BKK-001  C004        40          120         80          0           C1-R1-B01   Pick        Allocated to order
+ITEM-003    P002        WH-LA-001   C001        50          150         100         0           A1-R2-B01   Putaway     Putaway from receiving
+ITEM-004    P003        WH-LA-002   C002        30          120         90          0           A1-R2-B02   Pick        Allocated to order
+ITEM-001    P001        WH-SG-001   C001        0           15          15          0           A1-R1-B01   Receipt     Received from inbound shipment
+ITEM-002    P001        WH-SG-001   C001        0           10          10          0           A1-R1-B02   Receipt     Received from inbound shipment
+ITEM-009    P008        WH-SG-001   C010        50          150         100         0           A1-R3-B02   Putaway     Putaway from receiving
+ITEM-007    P006        WH-SG-002   C009        100         300         200         0           A1-R1-B01   Receipt     Received from inbound shipment
+```
 
 ### Delivery
 
-Paste the output from `Result Set Batch 2 - Query 23` here.
+```text
+DeliveryDate  RID         VID         WID         ShipID
+------------  ----------  ----------  ----------  -------------
+2026-03-26    R001        V001        WH-SG-001   SHIP-2025-001
+2026-03-27    R002        V002        WH-LA-001   SHIP-2025-002
+2026-03-28    R003        V006        WH-BKK-001  SHIP-2025-005
+```
 
 ## Appendix C
 
