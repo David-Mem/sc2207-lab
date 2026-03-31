@@ -1,7 +1,10 @@
 SELECT 
-    Original_Location, 
-    COUNT(SID) AS Major_Delay_Count
-FROM Shipment
-WHERE Ac_Arr_Date > (Ex_Arr_Date + INTERVAL '6 months')
-GROUP BY Original_Location
-ORDER BY Major_Delay_Count DESC;
+    AVG(
+        1.0 * (
+            (YEAR(s.AcArrDate) * 12 + MONTH(s.AcArrDate)) -
+            (YEAR(p.OrderDate) * 12 + MONTH(p.OrderDate))
+        )
+    ) AS Avg_Lead_Time_Months
+FROM PO p
+JOIN Shipment s ON p.OID = s.OID
+WHERE s.AcArrDate IS NOT NULL;
