@@ -2,5 +2,5 @@ CREATE TABLE Employee (
     SID VARCHAR(30),
     PRIMARY KEY (SID),
     Certification VARCHAR(255),
-    WarID VARCHAR(30) NOT NULL,
+    WID VARCHAR(30) NOT NULL,
 );
