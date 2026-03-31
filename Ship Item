@@ -1,5 +1,5 @@
 CREATE TABLE ShipItem(
-  Serial# INT,
+  Serial# VARCHAR(50),
   ShipID VARCHAR(50),
   ExArrDate DATE,
   ShippedQty INT NOT NULL,
