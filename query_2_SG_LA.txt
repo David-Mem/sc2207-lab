@@ -1,0 +1,14 @@
+SELECT 
+    CASE 
+        WHEN w.Address LIKE '%Singapore%' THEN 'Singapore'
+        WHEN w.Address LIKE '%Los Angeles, USA%' THEN 'Los Angeles'
+    END AS Region,
+    SUM(si.Shipped_Qty * oi.Unit_Price) AS Total_Business_Value
+FROM Warehouse w
+JOIN ShipmentToWarehouse sw ON w.WID = sw.WID
+JOIN Shipment s ON sw.ShipID = s.SID
+JOIN ShipItem si ON s.SID = si.ShipID
+JOIN OrderItem oi ON (si.Serial# = oi.Serial# AND s.OID = oi.OID)
+WHERE w.Address LIKE '%Singapore%' 
+   OR w.Address LIKE '%Los Angeles, USA%'
+GROUP BY 1;
