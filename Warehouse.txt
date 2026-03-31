@@ -1,13 +1,13 @@
 CREATE TABLE Warehouse(
-    WID INT,
-    Address VARCHAR(100),
+    WID VARCHAR(50),
+    Address VARCHAR(255),
     Size FLOAT,
     Temperature FLOAT, 
     Security INT, 
     PRIMARY KEY(WID));
 
-INSERT INTO Warehouse VALUES(1, '26 Nanyang Avenue', 40000.25, 23.6, 5);
-INSERT INTO Warehouse VALUES(2, '03 Shenton Way', 20000, 24.0, 4);
-INSERT INTO Warehouse VALUES(3, '25 Broadway', 10492, 24.1, 3);
-INSERT INTO Warehouse VALUES(4, '38 Orchard Road', 18934, 23.0, 2);
-INSERT INTO Warehouse VALUES(5, '89 Joo Chiat Road', 8935, 23.7, 1);
+INSERT INTO Warehouse VALUES(1, '26 Nanyang Avenue, Singapore', 40000.25, 23.6, 5);
+INSERT INTO Warehouse VALUES(2, '03 Shenton Way, Singapore', 20000, 24.0, 4);
+INSERT INTO Warehouse VALUES(3, '25 Broadway, Singapore', 10492, 24.1, 3);
+INSERT INTO Warehouse VALUES(4, '38 Orchard Road, Singapore', 18934, 23.0, 2);
+INSERT INTO Warehouse VALUES(5, '89 Joo Chiat Road, Singapore', 8935, 23.7, 1);

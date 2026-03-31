@@ -1,6 +1,6 @@
 CREATE TABLE SupplierHasShipment (
-    SupID INT NOT NULL,
-    ShipID INT NOT NULL,
+    SupID VARCHAR(50) NOT NULL,
+    ShipID VARCHAR(50) NOT NULL,
     PRIMARY KEY (SupID, ShipID),
     FOREIGN KEY (SupID) REFERENCES Supplier(SupID),
     FOREIGN KEY (ShipID) REFERENCES Shipment(SID)
