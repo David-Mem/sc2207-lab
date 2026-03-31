@@ -1,8 +1,8 @@
 CREATE TABLE Stop(
     RID VARCHAR(30),
     Sequence INT, 
-    Est_Arr_Time VARCHAR(100), 
-    Actual_Arr_Time VARCHAR(100),
+    Est_Arr_Time TIMESTAMP, 
+    Actual_Arr_Time TIMESTAMP,
     PRIMARY KEY(RID, Sequence));
 
 INSERT INTO Stop VALUES(1, 1, '2026-03-26 12:00:00', '2026-03-26 12:15:00');
