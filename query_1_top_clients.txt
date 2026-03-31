@@ -1,0 +1,26 @@
+WITH WarehouseBusiness AS (
+    SELECT 
+        sw.WID, 
+        cp.CID, 
+        SUM(si.Shipped_Qty * oi.Unit_Price) AS Total_Business_Value
+    FROM ShipmentToWarehouse sw
+    JOIN Shipment s ON sw.ShipID = s.SID
+    JOIN ShipItem si ON s.SID = si.ShipID
+    JOIN OrderItem oi ON (si.Serial# = oi.Serial# AND s.OID = oi.OID)
+    JOIN ClientHasPO cp ON s.OID = cp.OID
+    GROUP BY sw.WID, cp.CID
+),
+RankedClients AS (
+    SELECT 
+        WID, 
+        CID, 
+        Total_Business_Value,
+        ROW_NUMBER() OVER(PARTITION BY WID ORDER BY Total_Business_Value DESC) as client_rank
+    FROM WarehouseBusiness
+)
+SELECT 
+    WID AS Warehouse_ID, 
+    CID AS Client_ID, 
+    Total_Business_Value
+FROM RankedClients
+WHERE client_rank <= 3;
