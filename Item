@@ -1,6 +1,6 @@
 CREATE TABLE Item(
   Serial# VARCHAR(50),
-  PID INT NOT NULL,
+  PID VARCHAR(50) NOT NULL,
   PRIMARY KEY(Serial#)
 );
 

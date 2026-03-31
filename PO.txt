@@ -1,6 +1,6 @@
 CREATE TABLE PO (
-    OID INT PRIMARY KEY,
+    OID VARCHAR(50) PRIMARY KEY,
     OrderDate DATE,
     Status VARCHAR(100),
-    Value DECIMAL(10, 2)
+    Value DECIMAL(20, 2)
 );
