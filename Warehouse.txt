@@ -3,6 +3,6 @@ CREATE TABLE Warehouse(
     Address VARCHAR(255),
     Size FLOAT,
     Temperature VARCHAR(255),
-    Fragile BOOLEAN,
     Security INT, 
+    Fragile BOOLEAN,
     PRIMARY KEY(WID));
